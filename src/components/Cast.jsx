@@ -2,6 +2,16 @@ import { useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import defaultImage from './images/defaultImage.jpg';
 
+import {
+  CastSection,
+  CastContainer,
+  CastInfo,
+  CastName,
+  CastCharacter,
+  CastInfoContainer,
+  CastImage,
+} from './Cast.styled';
+
 export const Cast = () => {
   const { movieId } = useParams();
   const [movieCast, setMovieCast] = useState([]);
@@ -34,25 +44,32 @@ export const Cast = () => {
   }, [movieId]);
 
   return (
-    <section>
+    <CastSection>
       {movieCast.map(cast => (
-        <div key={cast.cast_id}>
+        <CastContainer key={cast.cast_id}>
           {cast.profile_path ? (
-            <img
+            <CastImage
               src={`https://image.tmdb.org/t/p/w500${cast.profile_path}`}
               alt={cast.original_name}
-              width={300}
+              width={200}
             />
           ) : (
-            <img src={defaultImage} alt={cast.original_name} width={300} />
+            <img
+              src={defaultImage}
+              alt={cast.original_name}
+              width={200}
+              height={300}
+            />
           )}
-          <ul>
-            <li>{cast.original_name}</li>
-            <li>{cast.character}</li>
-          </ul>
-        </div>
+          <CastInfoContainer>
+            <CastInfo>
+              <CastName>Name: {cast.original_name}</CastName>
+              <CastCharacter>Character: {cast.character}</CastCharacter>
+            </CastInfo>
+          </CastInfoContainer>
+        </CastContainer>
       ))}
-    </section>
+    </CastSection>
   );
 };
 

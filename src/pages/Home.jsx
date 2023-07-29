@@ -7,18 +7,17 @@ const Home = () => {
   const [page, setPage] = useState(1);
   const [movies, setMovies] = useState([]);
 
-  const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0YzIyNjUxNjE2N2YyMWVkNWNhZjU1YWZhZWIzMjRhNyIsInN1YiI6IjY0YzE1NzMyMmYxYmUwMDE0ZWY1ZTAzNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XkXav8VFDN__J747SZUUPnB34jW0XTsc1lvFxEQPxIA',
-    },
-  };
-
   const location = useLocation();
 
   useEffect(() => {
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization:
+          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0YzIyNjUxNjE2N2YyMWVkNWNhZjU1YWZhZWIzMjRhNyIsInN1YiI6IjY0YzE1NzMyMmYxYmUwMDE0ZWY1ZTAzNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XkXav8VFDN__J747SZUUPnB34jW0XTsc1lvFxEQPxIA',
+      },
+    };
     fetch(
       `https://api.themoviedb.org/3/trending/movie/day?page=${page}`,
       options

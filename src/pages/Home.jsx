@@ -29,7 +29,7 @@ const Home = () => {
         );
       })
       .catch(err => console.error(err));
-  }, [page, options]);
+  }, [page]);
 
   const loadMoreImages = () => {
     setPage(prevPage => prevPage + 1);
